@@ -62,12 +62,21 @@ class DigitalDiagnosticMonitoring(Flag):
     disable = False
 
 
+class EnergyEfficientEthernet(Flag):
+    """
+    Energy Efficient Ethernet (802.3az)
+    """
+    enable = True
+    disable = False
+
+
 class EthernetInterface(BaseModel):
     """
     Физический интерфейс
     """
     name: str
     description: str = ''
+    combo: bool = False
     type: InterfaceType = InterfaceType.gigabit_ethernet
     admin_state: InterfaceAdminState = InterfaceAdminState.up
     autonegotiation: bool = True
@@ -76,3 +85,4 @@ class EthernetInterface(BaseModel):
     configured_crossover_mode: EthernetCrossover = EthernetCrossover.auto
     link_trap: bool = False
     ddm: DigitalDiagnosticMonitoring = None
+    eee: EnergyEfficientEthernet = None
